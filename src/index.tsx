@@ -40,7 +40,7 @@ interface WunderWheelProps {
   wheelBackgroundColor?: string;
   knobFill?: string;
   winningSegmentColor?: string;
-  onSpinEnd?: (winner: string, index: number) => void;
+  onSpinEnd?: (index: number) => void;
   minDeceleration?: number;
   maxDeceleration?: number;
 }
@@ -136,10 +136,7 @@ export default function WunderWheel({
       setWinningIndex(winningSegmentIndex);
       setEnabled(true);
       setIsFinished(false);
-      onSpinEnd?.(
-        wheelPaths[winningSegmentIndex]?.value?.toString() || '',
-        winningSegmentIndex
-      );
+      onSpinEnd?.(winningSegmentIndex);
     }
   }, [
     isFinished,
